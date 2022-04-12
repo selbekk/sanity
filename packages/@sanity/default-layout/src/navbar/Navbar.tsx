@@ -30,6 +30,7 @@ interface NavbarProps {
   onUserLogout: () => void
   onSearchOpen: (open: boolean) => void
   searchPortalElement: HTMLDivElement | null
+  setCreateButtonElement?: (el: HTMLButtonElement | null) => void
 }
 
 const Root = styled(Card)<{$onSearchOpen: boolean}>`
@@ -112,6 +113,7 @@ export const Navbar = memo(function Navbar(props: NavbarProps) {
     searchPortalElement,
     templatePermissions,
     isTemplatePermissionsLoading,
+    setCreateButtonElement,
   } = props
 
   const [searchOpen, setSearchOpen] = useState<boolean>(false)
@@ -261,6 +263,7 @@ export const Navbar = memo(function Navbar(props: NavbarProps) {
                   mode="bleed"
                   onClick={onCreateButtonClick}
                   selected={createMenuIsOpen}
+                  ref={setCreateButtonElement}
                 />
               </SpacingBox>
             </Tooltip>
